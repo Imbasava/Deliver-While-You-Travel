@@ -1,3 +1,4 @@
+ 
 # Deliver While You Travel
 
 Deliver While You Travel is a platform that connects travelers with senders who need to transport small packages. Travelers can post their travel details, and senders can search for suitable travelers based on the source and destination. The platform aims to provide a cost-effective and efficient alternative to traditional courier services.
@@ -168,12 +169,7 @@ Follow these steps to set up and run the project locally. You will need Java (JD
 5. Push to the branch: `git push origin feature/your-feature-name`.
 6. Open a Pull Request against the `main` branch of the original repository.
 
----
-
-## License
-[Specify your license here, e.g., MIT License. If you choose one, add a LICENSE file to the repository root.]
-
----
+ 
 
 ## Contact
 For any questions or support, please contact:
