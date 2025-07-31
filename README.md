@@ -5,7 +5,7 @@ Deliver While You Travel is a platform that connects travelers with senders who 
 
 ---
 
-## Ui Looks
+## Visualization
 
 Here are some glimpses of the application interface:
 
