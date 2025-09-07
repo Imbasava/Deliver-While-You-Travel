@@ -2,7 +2,11 @@
 # Deliver While You Travel
 
 Deliver While You Travel is a platform that connects travelers with senders who need to transport small packages. Travelers can post their travel details, and senders can search for suitable travelers based on the source and destination. The platform aims to provide a cost-effective and efficient alternative to traditional courier services.
+---
+##Architecture 
+![Main Frontend Interface](Architechture.png)
 
+---
 ---
 
 ## Visualization
