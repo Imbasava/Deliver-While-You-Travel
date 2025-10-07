@@ -1,0 +1,121 @@
+Creational
+
+1. Singleton (Spring beans)
+
+In Spring Boot, classes annotated with @Service, @Component, @Repository, or @Controller are singletons by default (only one instance per application context).
+
+In your project:
+
+TripService.java, JwtUtil.java, EmailService.java → Spring creates and reuses a single instance for each, avoiding multiple object creations.
+
+Structural
+
+2. MVC (Model–View–Controller)
+
+You’ve structured your project into layers:
+
+Controllers (e.g., TripController, DeliveryController) handle HTTP requests.
+
+Models/Entities (User, Trip, etc. in model package) represent database tables.
+
+Views (your React frontend in src/views) present the UI.
+
+This keeps separation of concerns clear.
+
+3. Repository (DAO Pattern)
+
+You’re using Spring Data JPA repositories like TripRepository.java and UserRepository.java.
+
+They abstract CRUD operations without you writing SQL directly.
+
+Example: tripRepository.findByOriginAndDestination(...) → encapsulates database queries.
+
+4. DTO (Data Transfer Object)
+
+You’ve created DTOs to shape data before sending it to the client.
+
+Example: TripWithDistanceDTO.java → carries trip details plus computed distance instead of exposing raw entity.
+
+5. Adapter
+
+Example: JwtUtil.java wraps a third-party JWT library.
+
+Instead of exposing the external API directly, you provide clean methods like generateToken() and validateToken().
+
+This adapts external functionality to your project’s needs.
+
+6. Facade
+
+Controllers (TripController, DeliveryController) act as facades.
+
+They expose a simple REST API (/api/trips, /api/delivery) and delegate complex business logic to services.
+
+Clients (React frontend / Postman) only interact with the facade (controller), not the internals.
+
+7. Chain of Responsibility (via Filters)
+
+Example: JwtFilter.java.
+
+It intercepts requests before they reach controllers.
+
+Requests pass through a filter chain (FilterChain.doFilter()), where each filter decides whether to handle or pass it along.
+
+You use it for authentication checks before controllers execute.
+
+Behavioral
+
+8. Chain of Responsibility (again)
+
+Same as above, but here you’re applying the behavioral intent of the pattern: different handlers (filters) in a sequence, each can either process or pass forward.
+
+Cross-cutting / Architectural
+
+9. Layered Architecture / Service Layer
+
+You’ve cleanly separated layers:
+
+Controller → Service → Repository.
+
+Example:
+
+TripController → receives request.
+
+Calls TripService → business logic (like calculating distance).
+
+TripService calls TripRepository → persistence.
+
+This is the Service Layer pattern.
+
+10. RESTful API Style
+
+Controllers (/api/trips, /api/users) expose REST endpoints returning JSON.
+
+Follows REST principles (resources, verbs: GET/POST/PUT/DELETE).
+
+11. Caching
+
+In TripService, you mentioned @Cacheable usage for trip-search.
+
+This is a caching pattern where repeated queries are stored in cache (like Redis or in-memory) to avoid hitting DB every time.
+
+✅ So in summary, you used:
+
+Singleton (Spring beans)
+
+MVC (Controller/Model/View separation)
+
+Repository (DAO)
+
+DTO
+
+Adapter (JwtUtil wrapper)
+
+Facade (controllers exposing simplified APIs)
+
+Chain of Responsibility (filters in request pipeline)
+
+Layered Architecture / Service Layer
+
+RESTful API
+
+Caching
